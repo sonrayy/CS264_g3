@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>ระบบลงทะเบียนล่าช้า</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -165,24 +165,93 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <div id="home" class="tabcontent">
   <h3>หน้าแรก</h3>
   <p>กลับสู่หน้าแรก...</p>
+  ข้อมูลทั่วไปของนักศึกษา เช่น ชื่อ นามสกุล ชั้นปี คณะ-สาขาที่กำลังศึกษาอยู่ อาจารย์ที่ปรึกษา
 </div>
 
 <div id="template" class="tabcontent">
   <h3>รูปแบบคำร้อง</h3>
   <p>กรุณาเลือกรูปแบบคำร้องด้านล่าง</p> 
   
-  <img id="myImg" src="cat1.jpg" alt="Cat1" style="width:100%;max-width:300px">
+  <img id="myImg" src="cat1.jpg" alt="temp1" style="width:100%;max-width:300px">
   <!-- The Modal -->
   <div id="myModal" class="modal">
    <span class="close">&times;</span>
    <img class="modal-content" id="img01">
    <div id="caption"></div>
   </div>
+  <img id="myImg" src="cat2.jpg" alt="temp2" style="width:100%;max-width:300px">
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+   <span class="close">&times;</span>
+   <img class="modal-content" id="img01">
+   <div id="caption"></div>
+  </div>
+  <img id="myImg" src="cat3.jpg" alt="temp3" style="width:100%;max-width:300px">
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+   <span class="close">&times;</span>
+   <img class="modal-content" id="img01">
+   <div id="caption"></div>
+  </div>
+  <form action="/action_page.php">
+    <div class="form-check">
+      <label class="form-check-label" for="check1">
+        <input type="checkbox" class="form-check-input" id="check1" name="option1" value="temp1" checked>temp1
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="check2">
+        <input type="checkbox" class="form-check-input" id="check2" name="option2" value="temp2">temp2
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" id="check3" name="Option3" value="temp3">temp3
+      </label>
+    </div>
+    <div class="alert alert-warning">
+      <strong>คำเตือน!</strong> คุณสามารถบันทึกข้อมูลได้ไม่เกิน 3 ครั้งเท่านั้น.
+    </div>
+    <button type="submit" class="btn btn-primary">บันทึก</button>
+  </form>
+
+
+
 </div>
 
 <div id="fill" class="tabcontent">
   <h3>กรอกคำร้อง</h3>
-  <p>กรุณากรอกคำร้อง...</p>
+
+  <form>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <i class="input-group-text">ชื่อ</i>
+      </div>
+      <input type="text" class="form-control" placeholder="ชื่อ">
+      <div class="input-group-prepend">
+        <i class="input-group-text">นามสกุล</i>
+      </div>
+      <input type="text" class="form-control" placeholder="นามสกุล">
+    </div>  
+  </form>
+  <p>กรุณากรอกชั้นปี</p>
+  <form>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <i class="input-group-text">ชั้นปี</i>
+      </div>
+      <input type="text" class="form-control" placeholder="ชั้นปีที่ 1,ชั้นปีที่ 2,ชั้นปีที่ 3, ชั้นปีที่ 4">
+    </div>
+  </form>
+  <form>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <i class="input-group-text">เหตุผลคำร้อง</i>
+      </div>
+      <input type="text" class="form-control">
+    </div>
+  </form>
+  <button type="button" class="btn btn-primary">บันทึก</button>
 </div>
 
 <div id="send" class="tabcontent">
@@ -193,6 +262,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <div id="result" class="tabcontent">
   <h3>ผลคำร้อง</h3>
   <p>ผ่าน - ไม่ผ่าน...</p>
+  <div class="alert alert-success">
+    <strong>อนุมัติ!</strong> ผลคำร้องของคุณผ่านการอนุมัติ
+  </div>
+  หรือ
+  <div class="alert alert-danger">
+    <strong>ไม่อนุมัติ!</strong> ผลคำร้องของคุณไม่ผ่านการอนุมัติ
+  </div>
 </div>
 
 <div id="payment" class="tabcontent">
@@ -230,11 +306,11 @@ var modal = document.getElementById("myModal");
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
 var img = document.getElementById("myImg");
-//var img = document.getElementById("myImg1");
+var img1 = document.getElementById("myImg1");
 var modalImg = document.getElementById("img01");
-//var modalImg1 = document.getElementById("img02");
+var modalImg1 = document.getElementById("img02");
 var captionText = document.getElementById("caption");
-//var captionText = document.getElementById("caption");
+var captionText1 = document.getElementById("caption");
 img.onclick = function(){
   modal.style.display = "block";
   modalImg.src = this.src;
